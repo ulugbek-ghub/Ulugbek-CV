@@ -1,2 +1,2 @@
-# Ulug-bek-CV
+# Ulugbek-CV
 My personal CV website
