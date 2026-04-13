@@ -845,4 +845,20 @@ button,
   .theme-toggle {
     margin: 8px auto 0;
   }
+
+  .hero-btn {
+    padding: 14px 32px;
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+  
+  .hero-btn:hover {
+    letter-spacing: 3px;
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  .hero-btn:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+  }
 }
