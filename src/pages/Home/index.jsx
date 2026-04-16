@@ -17,4 +17,4 @@ function Home() {
   );
 }
 
-export default Home;  // ← MAKE SURE THIS LINE EXISTS
+export default Home;
