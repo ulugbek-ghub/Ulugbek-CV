@@ -27,9 +27,9 @@ function Navbar() {
       
       <div className={`navbar-links ${isMobile ? (menuOpen ? 'open' : 'closed') : ''}`}>
         <NavLink to="/" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"} end onClick={() => setMenuOpen(false)}>Home</NavLink>
-        <NavLink to="/about" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"} onClick={() => setMenuOpen(false)}>About</NavLink>
+        <NavLink to="/projects" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"} onClick={() => setMenuOpen(false)}>Projects</NavLink>
         <NavLink to="/contact" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"} onClick={() => setMenuOpen(false)}>Contact</NavLink>
-        <NavLink to="/settings" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"} onClick={() => setMenuOpen(false)}>Settings</NavLink>
+        <NavLink to="/about" className={({ isActive }) => isActive ? "navbar-link active" : "navbar-link"} onClick={() => setMenuOpen(false)}>About</NavLink>
         <button className="theme-toggle" onClick={toggle}>
           {dark ? "☀️" : "🌙"}
         </button>

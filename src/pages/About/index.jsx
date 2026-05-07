@@ -1,6 +1,15 @@
 import Navbar from "../../components/navbar";
+import cssIcon from "../../assets/css.svg";
 
-const skills = ["HTML/CSS", "JavaScript", "React", "UX Design", "Python", "Bootstrap"];
+const skills = [
+  { name: "HTML/CSS", slug: "html5", icon: null },
+  { name: "CSS", slug: null, icon: cssIcon },
+  { name: "JavaScript", slug: "javascript", icon: null },
+  { name: "React", slug: "react", icon: null },
+  { name: "UX Design", slug: "figma", icon: null },
+  { name: "Python", slug: "python", icon: null },
+  { name: "Bootstrap", slug: "bootstrap", icon: null },
+];
 
 function About() {
   return (
@@ -18,8 +27,11 @@ function About() {
         </p>
         <h3 className="skills-title">Skills</h3>
         <div className="skills-list">
-          {skills.map((skill) => (
-            <span key={skill} className="skill-tag">{skill}</span>
+          {skills.map((s) => (
+            <span key={s.name} className="skill-badge">
+              <img className="skill-badge-icon" src={s.icon || `https://cdn.simpleicons.org/${s.slug}/white`} alt={s.name} style={s.icon ? { width: '32px', height: '32px' } : undefined} />
+              <span className="skill-badge-name">{s.name}</span>
+            </span>
           ))}
         </div>
       </section>

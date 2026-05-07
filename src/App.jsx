@@ -3,13 +3,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import Settings from './pages/Settings';
+import Projects from './pages/Projects';
 import Error from './pages/Error';
 import './App.css';
 
 function App() {
   const location = useLocation();
-  
+
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
@@ -33,6 +33,16 @@ function App() {
             <About />
           </motion.div>
         } />
+        <Route path="/projects" element={
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <Projects />
+          </motion.div>
+        } />
         <Route path="/contact" element={
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -41,16 +51,6 @@ function App() {
             transition={{ duration: 0.3 }}
           >
             <Contact />
-          </motion.div>
-        } />
-        <Route path="/settings" element={
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Settings />
           </motion.div>
         } />
         <Route path="*" element={
