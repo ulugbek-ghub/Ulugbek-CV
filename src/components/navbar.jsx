@@ -7,14 +7,18 @@ function Navbar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
+    // Set theme attribute and handle resize
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
+    handleResize();
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [dark]);
 
   const toggle = () => {
-    setDark(!dark);
-    document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+    const newDark = !dark;
+    setDark(newDark);
+    document.documentElement.setAttribute("data-theme", newDark ? "dark" : "light");
   };
 
   return (
