@@ -35,15 +35,31 @@ function Projects() {
   return (
     <>
       <Navbar />
-      <section className="page">
-        <h2 className="page-title">Projects</h2>
-        <div className="projects-list">
-          {projects.map((p) => (
-            <a key={p.title} href={p.url} target="_blank" className="project-card">
-              <img src={p.img} alt={p.title} className="project-card-img" />
-              <div className="project-card-body">
-                <h3 className="project-card-title">{p.title}</h3>
-                <p className="project-card-desc">{p.desc}</p>
+      <section className="max-w-[960px] mx-auto px-6 py-[110px] md:py-[130px] animate-[pageEnter_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]">
+        <h2 className="text-[32px] md:text-[48px] font-light uppercase text-[var(--white)] mb-7 tracking-[2px] md:tracking-[6px]">
+          Projects
+        </h2>
+        <div className="flex flex-col gap-7">
+          {projects.map((p, i) => (
+            <a 
+              key={p.title} 
+              href={p.url} 
+              target="_blank" 
+              className="flex items-stretch gap-6 border border-[var(--border)] rounded-xl overflow-hidden no-underline bg-[var(--surface)] transition-all duration-[350ms] opacity-0 animate-[fadeInUp_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards] hover:border-[var(--silver)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(255,255,255,0.08)]"
+              style={{ animationDelay: `${0.1 * i}s` }}
+            >
+              <img 
+                src={p.img} 
+                alt={p.title} 
+                className="w-[360px] min-h-[220px] object-cover flex-shrink-0 border-r border-[var(--border)] md:max-lg:w-[280px]"
+              />
+              <div className="flex flex-col justify-center py-6 pr-6 pl-0">
+                <h3 className="text-[18px] font-semibold uppercase tracking-[2.5px] text-[var(--white)] mb-2.5">
+                  {p.title}
+                </h3>
+                <p className="text-[15px] leading-relaxed text-[var(--silver-dim)]">
+                  {p.desc}
+                </p>
               </div>
             </a>
           ))}

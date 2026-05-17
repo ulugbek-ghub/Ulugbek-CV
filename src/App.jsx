@@ -8,8 +8,10 @@ import Projects from './pages/Projects';
 import Error from './pages/Error';
 import './App.css';
 
+
 function App() {
   const location = useLocation();
+  
 
   return (
     <>

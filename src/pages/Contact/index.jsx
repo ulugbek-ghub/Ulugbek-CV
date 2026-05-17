@@ -9,31 +9,37 @@ const icons = {
 };
 
 function Contact() {
+  const linkClass = "flex items-center gap-3 py-3 no-underline text-[var(--silver-light)] text-[17px] tracking-[1px] transition-all duration-[300ms] opacity-0 animate-[slideInRight_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards] hover:text-[var(--white)] hover:border-b border-[var(--border)] translate-x-[-20px] hover:translate-x-1 w-fit break-all";
+
+  const iconClass = "flex items-center justify-center w-9 h-9 rounded-lg border border-[var(--border)] bg-[var(--surface)] flex-shrink-0 text-[var(--white)]";
+
   return (
     <>
       <Navbar />
-      <section className="page">
-        <h2 className="page-title">Contact</h2>
-        <p className="page-desc">Feel free to reach out!</p>
-        <div className="contact-info">
-          <a href="mailto:ulugbek@email.com" target="_blank" className="contact-link">
-            <span className="contact-icon">{icons.email}</span>
+      <section className="max-w-[960px] mx-auto px-6 py-[110px] md:py-[130px] animate-[pageEnter_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]">
+        <h2 className="text-[32px] md:text-[48px] font-light uppercase text-[var(--white)] mb-7 tracking-[2px] md:tracking-[6px]">
+          Contact
+        </h2>
+        <p className="text-[17px] text-[var(--silver-dim)] mb-9">Feel free to reach out!</p>
+        <div className="flex flex-col gap-6">
+          <a href="mailto:ulugbek@email.com" target="_blank" className={linkClass} style={{ animationDelay: '0s' }}>
+            <span className={iconClass}>{icons.email}</span>
             My Gmail, dont spam pls:)
           </a>
-          <a href="https://github.com/ulugbek-ghub" target="_blank" className="contact-link">
-            <span className="contact-icon">{icons.github}</span>
+          <a href="https://github.com/ulugbek-ghub" target="_blank" className={linkClass} style={{ animationDelay: '0.1s' }}>
+            <span className={iconClass}>{icons.github}</span>
             Github Profile
           </a>
-          <a href="https://www.instagram.com/ulugbekk.s/" target="_blank" className="contact-link">
-            <span className="contact-icon">{icons.instagram}</span>
+          <a href="https://www.instagram.com/ulugbekk.s/" target="_blank" className={linkClass} style={{ animationDelay: '0.2s' }}>
+            <span className={iconClass}>{icons.instagram}</span>
             Instagram
           </a>
-          <a href="tel:+998-93-742-2333"  className="contact-link">
-            <span className="contact-icon">{icons.phone}</span>
+          <a href="tel:+998-93-742-2333" className={linkClass} style={{ animationDelay: '0.3s' }}>
+            <span className={iconClass}>{icons.phone}</span>
             Phone number
           </a>
-          <p className="contact-link">
-            <span className="contact-icon">{icons.location}</span>
+          <p className={linkClass} style={{ animationDelay: '0.4s' }}>
+            <span className={iconClass}>{icons.location}</span>
             Urganch, Uzbekistan
           </p>
         </div>
