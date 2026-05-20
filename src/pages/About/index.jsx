@@ -1,10 +1,11 @@
 import Navbar from "../../components/navbar";
+import Typewriter from "../../components/Typewriter";
 import SkillCard from "../../components/SkillCard";
 
 const skills = [
   { name: "HTML", slug: "html5", percentage: 100 },
   { name: "Python", slug: "python", percentage: 90 },
-  { name: "CSS", slug: "css", percentage: 90 },
+  { name: "CSS", slug: "css3", percentage: 90 },
   { name: "Bootstrap", slug: "bootstrap", percentage: 70 },
   { name: "Figma", slug: "figma", percentage: 65 },
   { name: "Git", slug: "git", percentage: 60 },
@@ -16,33 +17,39 @@ function About() {
   return (
     <>
       <Navbar />
-      <section className="max-w-[960px] mx-auto px-6 py-[110px] md:py-[130px] animate-[diagonalEnter_0.8s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-        <h2 className="text-[32px] md:text-[48px] font-light uppercase text-[var(--white)] mb-7 tracking-[2px] md:tracking-[6px] opacity-0 animate-[fadeSlide_0.6s_0.1s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-          About Me
-        </h2>
-        <p className="text-[17px] text-[var(--silver-dim)] leading-relaxed mb-9 opacity-0 animate-[fadeSlide_0.6s_0.2s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-          I'm a 15 year old Full Stack Developer located in Uzbekistan/Khorezm/Urganch, i can create user experiences with my various coding skills.
-          i can ensure that your web apps are Responsive, User-freindly and Affordable AF.
-        </p>
-        <p className="text-[17px] text-[var(--silver-dim)] leading-relaxed mb-12 opacity-0 animate-[fadeSlide_0.6s_0.3s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-          I've been in this Programming business for like 2-3 years now, 
-          ofc with the help of our mentors in IT-Park Urgench, Oybek brat bn G'ofur brat oddushiiii!
-        </p>
-        <h3 className="text-[15px] uppercase tracking-[2px] text-[var(--white)] mb-6 opacity-0 animate-[fadeSlide_0.6s_0.4s_cubic-bezier(0.16,1,0.3,1)_forwards]">Skills</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-          {skills.map((s, i) => (
-            <div 
-              key={s.name} 
-              className="opacity-0 animate-[popIn_0.5s_cubic-bezier(0.34,1.56,0.64,1)_forwards]"
-              style={{ animationDelay: `${0.05 * i}s` }}
-            >
-              <SkillCard 
+      <section className="px-8 md:px-16 py-[120px] md:py-[160px] max-w-[1200px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 mb-24">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--text-dim)] mb-6 font-[family-name:var(--font-body)]">About</p>
+            <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-[family-name:var(--font-heading)] text-[var(--text)] leading-[0.92] tracking-[-0.04em] mb-8">
+              <Typewriter text="Developer from Uzbekistan" delay={55} />
+            </h2>
+          </div>
+          <div className="space-y-6">
+            <p className="text-[14px] leading-[1.7] text-[var(--text-secondary)] font-[family-name:var(--font-body)]">
+              I'm a 15 year old full stack developer located in Khorezm, Urgench.
+              I build responsive, user-friendly web applications with clean architecture
+              and a focus on user experience.
+            </p>
+            <p className="text-[14px] leading-[1.7] text-[var(--text-secondary)] font-[family-name:var(--font-body)]">
+              With 2&ndash;3 years of experience in this field, I've worked with mentors
+              at IT-Park Urgench to sharpen my skills across the full stack.
+            </p>
+          </div>
+        </div>
+
+        <div className="border-t border-[var(--border)] pt-12">
+          <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--text-dim)] mb-8 font-[family-name:var(--font-body)]">Skills</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-px bg-[var(--border)]">
+            {skills.map((s) => (
+              <SkillCard
+                key={s.name}
                 name={s.name}
                 percentage={s.percentage}
-                icon={`https://cdn.simpleicons.org/${s.slug}/white`}
+                slug={s.slug}
               />
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     </>

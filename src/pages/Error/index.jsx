@@ -1,22 +1,24 @@
 import { Link } from "react-router-dom";
 import Navbar from "../../components/navbar";
-import errorimg from "../../assets/404-img.svg"
+import Typewriter from "../../components/Typewriter";
 
 function ErrorPage() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen flex flex-col justify-center items-center px-5 pt-[100px] pb-10 gap-5 animate-[pageEnter_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-        <img src={errorimg} alt="404" />
-        <p className="text-[15px] uppercase tracking-[3px] text-[var(--silver-dim)] text-center">
-          Page not found
+      <div className="min-h-screen flex flex-col justify-center px-8 md:px-16 max-w-[1200px] mx-auto">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--text-dim)] mb-8 font-[family-name:var(--font-body)]">Error 404</p>
+        <h1 className="text-[clamp(4rem,15vw,12rem)] font-[family-name:var(--font-heading)] text-[var(--text)] leading-[0.85] tracking-[-0.06em] mb-8">
+          <Typewriter text="404" delay={120} />
+        </h1>
+        <p className="text-[14px] text-[var(--text-secondary)] max-w-[360px] mb-12 font-[family-name:var(--font-body)]">
+          The page you're looking for doesn't exist or has been moved.
         </p>
-        <Link 
-          to="/" 
-          className="mt-4 py-4 px-10 border border-[var(--silver-dim)] text-[var(--silver-light)] no-underline text-[14px] uppercase tracking-[3px] rounded-lg opacity-0 animate-[popUp_0.6s_cubic-bezier(0.34,1.56,0.64,1)_forwards] hover:bg-white hover:text-black hover:border-white"
-          style={{ animationDelay: '0.6s' }}
+        <Link
+          to="/"
+          className="h-[54px] px-10 border border-[var(--text)] text-[var(--text)] no-underline text-[12px] font-medium uppercase tracking-[0.2em] transition-all duration-300 bg-transparent cursor-pointer inline-flex items-center justify-center w-fit hover:bg-[var(--text)] hover:text-[var(--bg)] font-[family-name:var(--font-body)]"
         >
-          Go Home
+          Back to Home
         </Link>
       </div>
     </>

@@ -1,4 +1,5 @@
 import Navbar from "../../components/navbar";
+import Typewriter from "../../components/Typewriter";
 import movieApp from "../../assets/movie-app.png";
 import todoList from "../../assets/todo-list.png";
 import usdUzs from "../../assets/usd-uzs.png";
@@ -19,13 +20,13 @@ const projects = [
   },
   {
     title: "USD-to-UZS-React",
-    desc: "Simple USD to Uzbek Som currency converter. Dollarni so'mda chiqaruvchi kalkulyator.",
+    desc: "Simple USD to Uzbek Som currency converter.",
     url: "https://github.com/ulugbek-ghub/USD-to-UZS-React",
     img: usdUzs,
   },
   {
     title: "Color-Pallete-React",
-    desc: "Interactive color palette generator built with React — pick, preview, and explore color combinations.",
+    desc: "Interactive color palette generator — pick, preview, and explore color combinations.",
     url: "https://github.com/ulugbek-ghub/Color-Pallete-React",
     img: colorPallete,
   },
@@ -35,32 +36,32 @@ function Projects() {
   return (
     <>
       <Navbar />
-      <section className="max-w-[960px] mx-auto px-6 py-[110px] md:py-[130px] animate-[pageEnter_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-        <h2 className="text-[32px] md:text-[48px] font-light uppercase text-[var(--white)] mb-7 tracking-[2px] md:tracking-[6px]">
-          Projects
+      <section className="px-8 md:px-16 py-[120px] md:py-[160px] max-w-[1200px] mx-auto">
+        <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--text-dim)] mb-6 font-[family-name:var(--font-body)]">Projects</p>
+        <h2 className="text-[clamp(2rem,5vw,3.5rem)] font-[family-name:var(--font-heading)] text-[var(--text)] leading-[0.92] tracking-[-0.04em] mb-12">
+          <Typewriter text="Selected work" delay={55} />
         </h2>
-        <div className="flex flex-col gap-7">
-          {projects.map((p, i) => (
-            <a 
-              key={p.title} 
-              href={p.url} 
-              target="_blank" 
-              className="flex items-stretch gap-6 border border-[var(--border)] rounded-xl overflow-hidden no-underline bg-[var(--surface)] transition-all duration-[350ms] opacity-0 animate-[fadeInUp_0.6s_cubic-bezier(0.16,1,0.3,1)_forwards] hover:border-[var(--silver)] hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(255,255,255,0.08)]"
-              style={{ animationDelay: `${0.1 * i}s` }}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[var(--border)]">
+          {projects.map((p) => (
+            <a
+              key={p.title}
+              href={p.url}
+              target="_blank"
+              className="group relative bg-[var(--surface)] p-8 no-underline transition-all duration-300 hover:bg-[var(--surface)]"
             >
-              <img 
-                src={p.img} 
-                alt={p.title} 
-                className="w-[360px] min-h-[220px] object-cover flex-shrink-0 border-r border-[var(--border)] md:max-lg:w-[280px]"
-              />
-              <div className="flex flex-col justify-center py-6 pr-6 pl-0">
-                <h3 className="text-[18px] font-semibold uppercase tracking-[2.5px] text-[var(--white)] mb-2.5">
-                  {p.title}
-                </h3>
-                <p className="text-[15px] leading-relaxed text-[var(--silver-dim)]">
-                  {p.desc}
-                </p>
+              <div className="aspect-[16/10] overflow-hidden mb-6 bg-[var(--bg)]">
+                <img
+                  src={p.img}
+                  alt={p.title}
+                  className="w-full h-full object-cover opacity-70 transition-all duration-500 group-hover:opacity-100"
+                />
               </div>
+              <h3 className="text-[13px] font-medium uppercase tracking-[0.15em] text-[var(--text)] mb-3 font-[family-name:var(--font-body)]">
+                {p.title}
+              </h3>
+              <p className="text-[13px] leading-[1.6] text-[var(--text-secondary)] font-[family-name:var(--font-body)]">
+                {p.desc}
+              </p>
             </a>
           ))}
         </div>
