@@ -5,7 +5,7 @@ import SkillCard from "../../components/SkillCard";
 const skills = [
   { name: "HTML", slug: "html5", percentage: 100 },
   { name: "Python", slug: "python", percentage: 90 },
-  { name: "CSS", slug: "css3", percentage: 90 },
+  { name: "CSS", slug: "css", percentage: 90 },
   { name: "Bootstrap", slug: "bootstrap", percentage: 70 },
   { name: "Figma", slug: "figma", percentage: 65 },
   { name: "Git", slug: "git", percentage: 60 },
