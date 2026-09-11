@@ -1,52 +1,77 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-import Home from './pages/Home';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Projects from './pages/Projects';
-import Error from './pages/Error';
+import { AnimatePresence, MotionConfig } from 'framer-motion';
+import React, { useState, lazy, Suspense } from 'react';
+import Navbar from './components/Navbar';
+import ErrorBoundary from './components/ErrorBoundary';
+import PageTransition from './components/PageTransition';
 
-const pageVariants = {
-  enter: { opacity: 0, x: 60 },
-  center: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -60 },
-};
+const Home = lazy(() => import('./pages/Home'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Projects = lazy(() => import('./pages/Projects'));
+const ErrorPage = lazy(() => import('./pages/Error'));
+
+const pathOrder = ['/', '/projects', '/contact', '/about'];
+
+function computeIsForward(current, previous) {
+  if (!previous) return true;
+  const currentIndex = pathOrder.indexOf(current);
+  const prevIndex = pathOrder.indexOf(previous);
+  if (currentIndex !== -1 && prevIndex !== -1) {
+    return currentIndex < prevIndex;
+  }
+  return true;
+}
 
 function App() {
   const location = useLocation();
+  const [navigationState, setNavigationState] = useState({
+    prevPathname: null,
+    isForward: true,
+  });
+
+  if (location.pathname !== navigationState.prevPathname) {
+    setNavigationState({
+      prevPathname: location.pathname,
+      isForward: computeIsForward(location.pathname, navigationState.prevPathname),
+    });
+  }
 
   return (
-    <div style={{ overflow: 'hidden' }}>
-      <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={
-            <motion.div variants={pageVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.35, ease: [0.65, 0, 0.1, 1] }}>
-              <Home />
-            </motion.div>
-          } />
-          <Route path="/about" element={
-            <motion.div variants={pageVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.35, ease: [0.65, 0, 0.1, 1] }}>
-              <About />
-            </motion.div>
-          } />
-          <Route path="/projects" element={
-            <motion.div variants={pageVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.35, ease: [0.65, 0, 0.1, 1] }}>
-              <Projects />
-            </motion.div>
-          } />
-          <Route path="/contact" element={
-            <motion.div variants={pageVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.35, ease: [0.65, 0, 0.1, 1] }}>
-              <Contact />
-            </motion.div>
-          } />
-          <Route path="*" element={
-            <motion.div variants={pageVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.35, ease: [0.65, 0, 0.1, 1] }}>
-              <Error />
-            </motion.div>
-          } />
-        </Routes>
-      </AnimatePresence>
-    </div>
+    <MotionConfig reducedMotion="user">
+      <Navbar />
+      <main id="main-content">
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={
+              <PageTransition isForward={navigationState.isForward}>
+                <Suspense fallback={null}><Home /></Suspense>
+              </PageTransition>
+            } />
+            <Route path="/about" element={
+              <PageTransition isForward={navigationState.isForward}>
+                <Suspense fallback={null}><About /></Suspense>
+              </PageTransition>
+            } />
+            <Route path="/projects" element={
+              <PageTransition isForward={navigationState.isForward}>
+                <Suspense fallback={null}><Projects /></Suspense>
+              </PageTransition>
+            } />
+            <Route path="/contact" element={
+              <PageTransition isForward={navigationState.isForward}>
+                <Suspense fallback={null}><Contact /></Suspense>
+              </PageTransition>
+            } />
+            <Route path="*" element={
+              <PageTransition isForward={navigationState.isForward}>
+                <Suspense fallback={null}><ErrorPage /></Suspense>
+              </PageTransition>
+            } />
+          </Routes>
+        </AnimatePresence>
+      </main>
+    </MotionConfig>
   );
 }
 

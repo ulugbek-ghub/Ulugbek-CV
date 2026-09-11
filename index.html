@@ -2,19 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/ulugbek-pfp.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ulug'bek Safarboyev — 15-year-old full stack developer from Urgench, Uzbekistan. Building responsive, user-focused web applications." />
+    <meta property="og:title" content="Ulug'bek — CV" />
+    <meta property="og:description" content="Full stack developer from Uzbekistan. View my projects and get in touch." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b0b0b" />
+    <link rel="icon" href="/ulugbek-pfp.jpg" />
     <title>Ulug'bek — CV</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       html { background: #0b0b0b; }
     </style>
     <script>
       (function() {
         var theme = localStorage.getItem('theme');
-        if (!theme) theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (!theme) theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
