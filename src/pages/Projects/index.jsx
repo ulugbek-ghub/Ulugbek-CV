@@ -35,7 +35,7 @@ const projects = [
 
 function Projects() {
   return (
-    <section className="px-6 sm:px-8 md:px-16 py-[100px] md:py-[160px] max-w-[1200px] mx-auto">
+    <section className="px-6 sm:px-8 md:px-16 pt-[100px] pb-[100px] md:pb-[160px] max-w-[1200px] mx-auto">
       <ScrollReveal>
         <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--text-dim)] mb-6 font-[family-name:var(--font-body)]">Projects</p>
       </ScrollReveal>

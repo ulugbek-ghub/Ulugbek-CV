@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function renderLines(t) {
   return t.split("\n").map((line, i) => (
@@ -6,14 +6,21 @@ function renderLines(t) {
   ));
 }
 
-function TypewriterInner({ text, delay }) {
+function TypewriterInner({ text, delay, onProgress }) {
   const [chars, setChars] = useState(0);
+  const onProgressRef = useRef(onProgress);
+
+  useEffect(() => {
+    onProgressRef.current = onProgress;
+  });
 
   useEffect(() => {
     let i = 0;
+    onProgressRef.current?.(text.slice(0, i));
     const interval = setInterval(() => {
       i++;
       setChars(i);
+      onProgressRef.current?.(text.slice(0, i));
       if (i >= text.length) clearInterval(interval);
     }, delay);
     return () => clearInterval(interval);
@@ -37,8 +44,8 @@ function TypewriterInner({ text, delay }) {
   );
 }
 
-function Typewriter({ text, delay = 60 }) {
-  return <TypewriterInner key={text} text={text} delay={delay} />;
+function Typewriter({ text, delay = 60, onProgress }) {
+  return <TypewriterInner key={text} text={text} delay={delay} onProgress={onProgress} />;
 }
 
 export default Typewriter;

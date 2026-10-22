@@ -15,7 +15,7 @@ const skills = [
 
 function About() {
   return (
-    <section className="px-6 sm:px-8 md:px-16 py-[100px] md:py-[160px] max-w-[1200px] mx-auto">
+    <section className="px-6 sm:px-8 md:px-16 pt-[100px] pb-[100px] md:pb-[160px] max-w-[1200px] mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24 mb-24">
         <div>
           <ScrollReveal>

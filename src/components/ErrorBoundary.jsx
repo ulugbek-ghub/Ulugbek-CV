@@ -13,7 +13,7 @@ class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex flex-col justify-center items-center px-8 text-center">
+        <div className="min-h-dvh flex flex-col justify-center items-center px-8 text-center">
           <p className="text-[11px] uppercase tracking-[0.2em] text-[var(--text-dim)] mb-4 font-[family-name:var(--font-body)]">
             Something went wrong
           </p>

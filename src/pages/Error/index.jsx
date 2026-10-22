@@ -110,7 +110,7 @@ function ErrorPage() {
 
   return (
     <div
-      className="min-h-screen flex flex-col justify-center items-center bg-[var(--bg)] px-6 relative overflow-hidden"
+      className="min-h-dvh flex flex-col justify-center items-center bg-[var(--bg)] px-6 pt-[100px] pb-16 relative overflow-hidden"
       onPointerMove={handlePointerMove}
       onPointerLeave={handlePointerLeave}
     >
